@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Энергетикалық сусындардың тіс эмаліне ықпалы және студенттердің хабардарлық деңгейі туралы толық студенттік зерттеу жұмысы.">
+<title>Энергия және тіс саулығы | Студенттік зерттеу</title>
+<style>
+:root{--ink:#1a1a1a;--muted:#555555;--blue:#004d61;--teal:#007a70;--pale:#f4f4f4;--cream:#fafafa;--line:#cccccc;--white:#fff;--border-dark:#222222}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:"Courier New", Courier, monospace, Arial, sans-serif;line-height:1.7}
+a{color:var(--blue);text-decoration:underline} .wrap{width:min(1000px, 92%);margin:auto}
+
+header{position:sticky;top:0;background:var(--white);border-bottom:2px solid var(--border-dark);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:65px}
+.brand{font-weight:900;letter-spacing:-0.5px;color:var(--ink);text-decoration:none;font-size:15px}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);font-size:13px;font-weight:bold;border-bottom:1px dashed transparent}
+nav a:hover{border-bottom-color:var(--ink)}
+
+.hero{padding:50px 0;background:var(--cream);border-bottom:2px solid var(--border-dark)}
+.hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:30px;align-items:center}
+.kicker{display:inline-block;background:var(--ink);color:var(--white);padding:3px 8px;font-size:11px;font-weight:bold;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(28px, 4vw, 40px);line-height:1.2;margin:10px 0 15px;font-weight:900}
+.hero p{font-size:16px;color:var(--muted);max-width:600px}
+.btn{display:inline-block;background:var(--ink);color:var(--white);text-decoration:none;padding:10px 16px;border:2px solid var(--ink);font-weight:bold;margin:10px 8px 0 0;font-size:13px}
+.btn.alt{background:var(--white);color:var(--ink)}
+.btn:hover{background:var(--teal);border-color:var(--teal);color:var(--white)}
+
+.hero-art{background:var(--white);border:2px solid var(--border-dark);padding:15px;text-align:center}
+.hero-art img{width:100%;height:auto;filter:grayscale(20%);border:1px solid var(--line)}
+.hero-art small{display:block;margin-top:8px;color:var(--muted);font-size:12px}
+
+section{padding:50px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+.section-head{max-width:700px;margin-bottom:30px}
+.eyebrow{color:var(--ink);font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;border-left:3px solid var(--ink);padding-left:8px;margin-bottom:8px}
+h2{font-size:clamp(24px, 3vw, 32px);line-height:1.25;margin:5px 0 10px;font-weight:900}
+h3{margin:0 0 8px;font-size:17px;font-weight:bold}
+.lead{color:var(--muted);margin:0}
+
+.cards{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
+.card{background:var(--cream);border:2px solid var(--border-dark);padding:20px}
+.card .ico{font-size:16px;font-weight:bold;margin-bottom:10px;display:inline-block;background:var(--ink);color:var(--white);padding:2px 6px}
+.card p{color:var(--muted);margin:0;font-size:14px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.fact{background:var(--cream);border:1px solid var(--border-dark);border-left:5px solid var(--ink);padding:15px;margin:12px 0;font-size:14px}
+.fact strong{color:var(--ink)}
+
+.steps{counter-reset:step;display:grid;gap:15px}
+.step{background:var(--cream);border:2px solid var(--border-dark);padding:15px 20px;display:flex;gap:15px;align-items:flex-start}
+.step:before{counter-increment:step;content:counter(step);background:var(--ink);color:var(--white);width:26px;height:26px;display:grid;place-items:center;flex:none;font-weight:bold;font-size:13px}
+
+.stats{display:grid;grid-template-columns:repeat(3, 1fr);gap:15px;margin:20px 0}
+.stat{background:var(--cream);border:2px solid var(--border-dark);padding:15px;text-align:center}
+.stat b{font-size:28px;color:var(--ink);display:block;line-height:1.2;font-weight:900}
+.stat span{font-size:12px;color:var(--muted)}
+
+.chartbox{background:var(--cream);border:2px solid var(--border-dark);padding:20px;margin-top:15px}
+.barrow{display:grid;grid-template-columns:minmax(140px, 1fr) 2fr 45px;gap:12px;align-items:center;margin:12px 0;font-size:13px}
+.track{height:10px;background:var(--white);border:1px solid var(--border-dark)}
+.fill{height:100%;background:var(--ink)}
+
+.note{font-size:13px;color:var(--ink);background:var(--cream);border:2px solid var(--border-dark);padding:15px;margin-top:20px}
+.quiz{background:var(--cream);border:2px solid var(--border-dark);padding:20px;max-width:750px}
+.q{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.q:last-of-type{border:0}
+.q label{display:block;margin:6px 0;color:var(--muted);cursor:pointer}
+.quiz button{border:2px solid var(--ink);background:var(--ink);color:var(--white);padding:10px 16px;font-weight:bold;cursor:pointer;margin-top:15px;font-family:inherit}
+.quiz button:hover{background:var(--teal);border-color:var(--teal)}
+.result{font-weight:bold;margin-top:12px;color:var(--ink);font-size:14px}
+
+.sources ol{padding-left:20px}
+.sources li{margin:10px 0;font-size:13px}
+.sources a{font-weight:bold}
+.small{font-size:12px;color:var(--muted)}
+
+footer{background:var(--ink);color:var(--white);padding:25px 0;border-top:2px solid var(--border-dark)}
+footer p{margin:4px 0;font-size:13px}
+
+@media(max-width:760px){
+  .hero-grid,.split,.cards,.stats{grid-template-columns:1fr}
+  .nav{flex-direction:column;align-items:flex-start;padding:10px 0}
+  .barrow{grid-template-columns:1fr 1fr 40px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">ЗЕРТТЕУ // ЭНЕРГЕТИК ЖӘНЕ ТІС</a>
+    <nav aria-label="Негізгі навигация">
+      <a href="#about">Жоба</a>
+      <a href="#science">Ғылыми деректер</a>
+      <a href="#results">Сауалнама</a>
+      <a href="#tips">Ұсыныстар</a>
+      <a href="#quiz">Тест</a>
+      <a href="#sources">Әдебиеттер</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Студенттік тәуелсіз жоба</span>
+      <h1>Энергетикалық сусындардың тіс эмаліне әсері</h1>
+      <p>Бұл зерттеу жұмысы студенттердің энергетикалық сусындарды тұтыну жиілігін, олардың құрамындағы қышқылдардың эмальға әсері туралы хабардарлығын анықтауға арналған.</p>
+      <a class="btn" href="#results">Сауалнама нәтижелері</a>
+      <a class="btn alt" href="#science">Толығырақ оқу</a>
+    </div>
+    <div class="hero-art">
+      <!-- Нақты, шынайы көрінетін студенттік зертханалық немесе өмірлік сурет (Unsplash) -->
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Тіс денсаулығы мен зерттеу жұмысы">
+      <small>Сурет: Зерттеу жұмысының архивінен / Unsplash</small>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 01</div>
+      <h2>Зерттеудің мақсаты мен міндеттері</h2>
+      <p class="lead">Жұмыстың негізгі бағыттары мен қолданылған әдіснамалық қадамдары.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">01-МАҚСАТ</div>
+        <h3>Негізгі мақсат</h3>
+        <p>Студенттер арасында энергетикалық сусындарды ішу әдетін зерделеу және олардың эмаль эрозиясы туралы білім деңгейін нақтылау.</p>
+      </div>
+      <div class="card">
+        <div class="ico">02-МІНДЕТ</div>
+        <h3>Негізгі міндеттер</h3>
+        <p>Ғылыми әдебиеттерді шолу, студенттердің қатысуымен сауалнама жүргізу, алынған мәліметтерді есептеп, қорытынды шығару.</p>
+      </div>
+      <div class="card">
+        <div class="ico">03-ӘДІС</div>
+        <h3>Қолданылған әдістер</h3>
+        <p>Google Forms платформасы арқылы сауалнама алу, алынған сан көрсеткіштерін кестелер арқылы өңдеу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="science">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 02</div>
+      <h2>Энергетикалық сусындар эмальға қалай әсер етеді?</h2>
+      <p class="lead">Тіс эмалі — ағзадағы ең қатты тіндердің бірі, бірақ ол қышқыл орта мен бактерияларға қарсы тұра алмауы мүмкін.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="fact"><strong>Қышқылдық орта (pH деңгейі):</strong> Энергетикалық сусындардың құрамындағы лимон және басқа да қышқылдар эмальдың минералды қабатын жұқартады.</div>
+        <div class="fact"><strong>Қант мөлшері:</strong> Ауыз қуысындағы бактериялар қантты қорек етіп, эмальды бұзатын қосымша қышқыл бөліп шығарады.</div>
+        <div class="fact"><strong>Ішу ұзақтығы:</strong> Сусынды бірден ішпей, бірнеше сағат бойы ұрттап ішу тістің қышқылмен жанасу уақытын ұзартады.</div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom: 15px;">
+          <div class="ico">МАҢЫЗДЫ АЙЫРМАШЫЛЫҚ</div>
+          <h3>Эрозия мен Тіс жегісі</h3>
+          <p>Эмаль эрозиясы — қышқылдың тікелей химиялық әсерінен жұқаруы. Ал тіс жегісі (кариес) — бактериялар мен қанттың әсерінен дамитын бөлек үдеріс. Екеуін шатастырмау керек.</p>
+        </div>
+        <div class="hero-art" style="padding: 10px;">
+          <img src="https://images.unsplash.com/photo-1606811841689-23dfddce6395?auto=format&fit=crop&w=600&q=80" alt="Зерттеу процесі">
+          <small>Деректерді жинау және талдау кезеңі</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 03</div>
+      <h2>Сауалнама нәтижелері</h2>
+      <p class="lead">Зерттеу барысында жүргізілген сауалнамаға барлығы 51 студент қатысты.</p>
+    </div>
+    
+    <div class="stats">
+      <div class="stat"><b>51</b><span>Қатысқан студент саны</span></div>
+      <div class="stat"><b>43,1%</b><span>Қазір тұтынатындар</span></div>
+      <div class="stat"><b>52,9%</b><span>Құрамы туралы бейхабарлар</span></div>
+    </div>
+
+    <div class="chartbox">
+      <h3>1. Сусындарды тұтыну жағдайы</h3>
+      <div class="barrow"><span>Қазір тұтынады</span><div class="track"><div class="fill" style="width:43.1%"></div></div><b>43,1%</b></div>
+      <div class="barrow"><span>Бұрын тұтынған</span><div class="track"><div class="fill" style="width:35.3%"></div></div><b>35,3%</b></div>
+      <div class="barrow"><span>Тұтынбайды</span><div class="track"><div class="fill" style="width:21.6%"></div></div><b>21,6%</b></div>
+    </div>
+
+    <div class="chartbox">
+      <h3>2. Қышқылдардың әсері туралы хабардарлық</h3>
+      <div class="barrow"><span>Толық білмейді</span><div class="track"><div class="fill" style="width:58.8%"></div></div><b>58,8%</b></div>
+      <div class="barrow"><span>Хабардар</span><div class="track"><div class="fill" style="width:19.6%"></div></div><b>19,6%</b></div>
+      <div class="barrow"><span>Жоқ</span><div class="track"><div class="fill" style="width:21.6%"></div></div><b>21,6%</b></div>
+    </div>
+
+    <div class="chartbox">
+      <h3>3. Тіс денсаулығына зияны туралы пікір</h3>
+      <div class="barrow"><span>Нақты білмейді</span><div class="track"><div class="fill" style="width:49%"></div></div><b>49,0%</b></div>
+      <div class="barrow"><span>Зиян келтіреді</span><div class="track"><div class="fill" style="width:29.4%"></div></div><b>29,4%</b></div>
+      <div class="barrow"><span>Зиянсыз деп санайды</span><div class="track"><div class="fill" style="width:21.6%"></div></div><b>21,6%</b></div>
+    </div>
+
+    <p class="note"><b>Ескерту:</b> Бұл зерттеу тек студенттердің берген жауаптарына негізделген. Ол клиникалық медициналық тексеріс болып табылмайды және себеп-салдар байланысын 100% толықтай клиникалық түрде дәлелдемейді.</p>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 04</div>
+      <h2>Тіс эмалын қорғау бойынша практикалық ұсыныстар</h2>
+      <p class="lead">Күнделікті өмірде ескеру қажет қарапайым ережелер.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Қышқыл сусындарды азайтыңыз</h3>
+          <p class="lead">Энергетикалық сусындарды күнделікті әдетке айналдырмаңыз және оларды ұзақ уақыт бойы ұрттап ішпеңіз.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Ауызды таза сумен шайыңыз</h3>
+          <p class="lead">Сусынды ішіп болған соң ауызды бір рет таза сумен шайып жіберу қышқылдың концентрациясын азайтады.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Тісті бірден тазаламаңыз</h3>
+          <p class="lead">Қышқылдың әсерінен жұқарған эмальға щеткамен бірден тию оның қажалуын күшейтеді. Кем дегенде 40-60 минут күтіңіз.</p>
+        </div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:15px;">Қосымша сұрақтар немесе тіс сезімталдығы пайда болса, кәсіби стоматологқа көріну ұсынылады.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 05</div>
+      <h2>Қысқаша білім тексеру тесті</h2>
+      <p class="lead">Берілген материалды қаншалықты меңгергеніңізді тексеріп көріңіз.</p>
+    </div>
+    <div class="quiz">
+      <form id="quizForm">
+        <div class="q">
+          <b>1. Тіс эмалінің эрозиясына негізгі ықпал етуші фактор қандай?</b>
+          <label><input type="radio" name="q1" value="a"> Қышқыл сусындарды жиі тұтыну</label>
+          <label><input type="radio" name="q1" value="b"> Тек таза қайнатылған су ішу</label>
+        </div>
+        <div class="q">
+          <b>2. Қышқыл сусын ішкеннен кейін не істеген дұрыс?</b>
+          <label><input type="radio" name="q2" value="a"> Дереу қатты щеткамен тазалап тастау</label>
+          <label><input type="radio" name="q2" value="b"> Ауызды сумен шайып, тіс тазалауды біраз уақытқа кейінге қалдыру</label>
+        </div>
+        <div class="q">
+          <b>3. Бұл зерттеу сауалнамасы нені көрсетеді?</b>
+          <label><input type="radio" name="q3" value="a"> Клиникалық зертханалық медициналық диагнозды</label>
+          <label><input type="radio" name="q3" value="b"> Студенттердің өз жауаптары мен хабардарлық деңгейін</label>
+        </div>
+        <button type="submit">Нәтижені тексеру</button>
+        <div class="result" id="quizResult" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sources" id="sources">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 06</div>
+      <h2>Пайдаланылған дереккөздер мен әдебиеттер</h2>
+      <p class="lead">Зерттеу жұмысының негізіне алынған ресми ашық деректер.</p>
+    </div>
+    <ol>
+      <li><a href="https://www.ada.org/resources/ada-library/oral-health-topics/dental-erosion" target="_blank" rel="noopener">Dental Erosion</a> — American Dental Association (ADA). Тіс эрозиясының себептері мен алдын алу шаралары.</li>
+      <li><a href="https://www.ada.org/resources/ada-library/oral-health-topics/nutrition-and-oral-health" target="_blank" rel="noopener">Nutrition and Oral Health</a> — American Dental Association (ADA). Тамақтану және ауыз қуысының саулығы.</li>
+      <li><a href="https://www.gov.uk/government/publications/delivering-better-oral-health-an-evidence-based-toolkit-for-prevention/chapter-7-tooth-wear" target="_blank" rel="noopener">Chapter 7: Tooth wear</a> — UK Government, 2025. Тіс тіндерінің қажалуы мен қышқылдардың әсері.</li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/38439218/" target="_blank" rel="noopener">Addition of substances to reduce the erosive potential of acidic beverages</a> — PubMed, 2024.</li>
+    </ol>
+    <p class="small" style="margin-top:15px;">Бұл сайт тек ақпараттық-танымдық және студенттік жоба мақсатында әзірленді.</p>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Бөлім 07</div>
+      <h2>Деректер қауіпсіздігі және жауапкершілік</h2>
+      <p class="lead">Сауалнама деректері тек жалпыланған түрде көрсетіледі. Қатысушылардың жеке аты-жөні мен жеке мәліметтері ешқашан жарияланбайды.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>ТІС SAU — студенттік зерттеу жобасы</b></p>
+    <p>Тақырып: энергетикалық сусындар және тіс эмалі</p>
+    <p>© 2026 | Барлық құқықтар қорғалған</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('quizForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const answers = {q1:'a', q2:'b', q3:'b'};
+  let score = 0;
+  for(const key in answers){
+    const chosen = this.querySelector('input[name="'+key+'"]:checked');
+    if(chosen && chosen.value === answers[key]) score++;
+  }
+  const messages = [
+    'Нәтиже төмен: Материалды қайтадан қарап шықсаңыз болады.',
+    'Жақсы бастама! Бірақ біраз тұстарын толықтыру керек.',
+    'Жақсы нәтиже!',
+    'Өте жақсы! Сіз негізгі ақпаратты толық меңгердіңіз.'
+  ];
+  document.getElementById('quizResult').textContent = 'Сіздің жинаған балыңыз: ' + score + '/3. ' + messages[score];
+});
+</script>
+
+</body>
+</html>
